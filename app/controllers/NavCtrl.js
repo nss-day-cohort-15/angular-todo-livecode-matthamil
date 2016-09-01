@@ -1,6 +1,8 @@
 'use strict';
 
-app.controller('NavCtrl', function($scope) {
+app.controller('NavCtrl', function($scope, SearchTermData) {
+  $scope.searchText = SearchTermData;
+
   $scope.navItems = [
     { name: 'Logout',    url: '#/logout' },
     { name: 'All Items', url: '#/items/list' },
