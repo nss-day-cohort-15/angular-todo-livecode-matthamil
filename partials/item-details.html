@@ -1,8 +1,32 @@
 <h1>Item Details</h1>
 
-<h2>Assigned To: {{selectedItem.assignedTo}}</h2>
-<h2>Due Date: {{selectedItem.dueDate}}</h2>
-<h2>Dependencies: {{selectedItem.dependencies}}</h2>
-<h2>Location: {{selectedItem.location}}</h2>
-<h2>Urgency: {{selectedItem.urgency}}</h2>
-<h2>Completed ?: {{(selectedItem.isCompleted ? "yes" : "no")}}</h2>
+<div class="form-group">
+  <label for="taskDescription">Task:</label>
+  <input class="form-control" name="taskDescription" type="text" value="{{selectedItem.task}}" ng-model="selectedItem.task">
+</div>
+<div class="form-group">
+  <label for="assignedTo">Assigned To:</label>
+  <input class="form-control" name="assignedTo" type="text" value="{{selectedItem.assignedTo}}" ng-model="selectedItem.assignedTo">
+</div>
+<div class="form-group">
+  <label for="dueDate">Due Date:</label>
+  <input class="form-control" name="dueDate" type="text" value="{{selectedItem.dueDate}}" ng-model="selectedItem.dueDate">
+</div>
+<div class="form-group">
+  <label for="dependencies">Dependencies:</label>
+  <input class="form-control" name="dependencies" type="text" value="{{selectedItem.dependencies}}" ng-model="selectedItem.dependencies">
+</div>
+<div class="form-group">
+  <label for="location">Location:</label>
+  <input class="form-control" name="location" type="text" value="{{selectedItem.location}}" ng-model="selectedItem.location">
+</div>
+<div class="form-group">
+  <label for="urgency">Urgency:</label>
+  <input class="form-control" name="urgency" type="text" value="{{selectedItem.urgency}}" ng-model="selectedItem.urgency">
+</div>
+<div class="form-group">
+  <label for="completed">Completed ?:</label>
+  <input name="completed" type="checkbox" ng-checked="selectedItem.isCompleted" ng-model="selectedItem.isCompleted">
+</div>
+<button type="button" class="btn btn-danger" ng-click="goBackToList()">Cancel</button>
+<button type="button" class="btn btn-success" ng-click="editItem()">Save</button>
