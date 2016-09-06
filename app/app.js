@@ -19,3 +19,12 @@ app.config(function ($routeProvider) {
     })
     .otherwise('/items/list');
 });
+
+app.run(($location, FB_CREDENTIALS) => {
+  const CREDENTIALS = FB_CREDENTIALS;
+  const authConfig = {
+    apiKey: CREDENTIALS.key,
+    authDomain: CREDENTIALS.authDomain
+  };
+  firebase.initializeApp(authConfig);
+});
