@@ -3,3 +3,4 @@ lib/node_modules
 css/
 .sass-cache
 bower_components node_modules
+app/values/fb-creds.js
