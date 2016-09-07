@@ -1,10 +1,10 @@
 'use strict';
 
-app.factory('ItemStorage', ($q, $http, FIREBASE_URL) => {
+app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
   let getItemList = () => {
     let items = [];
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_URL}/items.json`)
+      $http.get(`${FIREBASE_URL}/items.json?orderBy="uid"&equalTo="${AuthFactory.getUid()}"`)
         .success((itemObject) => {
           if (itemObject) {
             // Adding the keys to each object

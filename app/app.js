@@ -5,6 +5,14 @@ let app = angular.module('TodoApp', ['ngRoute'])
 
 app.config(function ($routeProvider) {
   $routeProvider
+    .when('/', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    })
+    .when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    })
     .when('/items/list', {
       templateUrl: 'partials/item-list.html',
       controller: 'ItemListCtrl'
@@ -17,7 +25,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'partials/item-details.html',
       controller: 'ItemViewCtrl'
     })
-    .otherwise('/items/list');
+    .otherwise('/');
 });
 
 app.run(($location, FB_CREDENTIALS) => {

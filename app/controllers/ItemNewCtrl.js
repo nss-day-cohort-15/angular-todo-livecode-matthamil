@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ItemNewCtrl', function($scope, ItemStorage, $location) {
+app.controller('ItemNewCtrl', function($scope, ItemStorage, $location, AuthFactory) {
   $scope.newTask = {
     assignedTo: '',
     dependencies: '',
@@ -8,7 +8,8 @@ app.controller('ItemNewCtrl', function($scope, ItemStorage, $location) {
     isCompleted: false,
     location: '',
     task: '',
-    urgency: 'normal'
+    urgency: 'normal',
+    uid: AuthFactory.getUid()
   };
 
   $scope.addNewItem = () => {

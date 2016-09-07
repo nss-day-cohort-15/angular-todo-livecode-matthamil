@@ -1,6 +1,14 @@
 'use strict';
 
-app.factory('AuthFactory', () => {
+app.factory('AuthFactory', ($q) => {
+  let _uid;
+
+  let setUid = (uid) => {
+    _uid = uid;
+  };
+
+  let getUid = () => _uid;
+
   let createUser = (userObj) => {
     return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
       .catch((error) => {
@@ -17,8 +25,15 @@ app.factory('AuthFactory', () => {
       });
   };
 
+  let logoutUser = () => {
+    return firebase.auth().signOut();
+  };
+
   return {
+    setUid,
+    getUid,
     createUser,
-    loginUser
+    loginUser,
+    logoutUser
   };
 });

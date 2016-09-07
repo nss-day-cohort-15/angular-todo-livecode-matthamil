@@ -14,6 +14,9 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory) {
         $scope.login();
       }, (error) => {
         console.error('Error creating user:', error);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 
@@ -21,7 +24,16 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory) {
     console.log('Login');
     AuthFactory.loginUser($scope.account)
       .then((userData) => {
-        $window.location.href = '#/items/list';
+        if (userData) {
+          AuthFactory.setUid(userData.uid);
+          $window.location.href = '#/items/list';
+        }
+        else {
+          $window.location.href= '#/login';
+        }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 });
