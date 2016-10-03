@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
-  let getItemList = () => {
+  const getItemList = () => {
     let items = [];
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_URL}/items.json?orderBy="uid"&equalTo="${AuthFactory.getUid()}"`)
@@ -21,7 +21,7 @@ app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
     });
   };
 
-  let postNewItem = (newItem) => {
+  const postNewItem = (newItem) => {
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_URL}/items.json`, JSON.stringify(newItem))
         .success((objFromFirebase) => {
@@ -33,7 +33,7 @@ app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
     });
   };
 
-  let deleteItem = (itemId) => {
+  const deleteItem = (itemId) => {
     return $q((resolve, reject) => {
       $http.delete(`${FIREBASE_URL}/items/${itemId}.json`)
         .success((objFromFirebase) => {
@@ -45,7 +45,7 @@ app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
     });
   };
 
-  let editItem = (itemObj) => {
+  const editItem = (itemObj) => {
     return $q((resolve, reject) => {
       $http.put(`${FIREBASE_URL}/items/${itemObj.id}.json`, JSON.stringify(itemObj))
         .success((objFromFirebase) => {
@@ -57,7 +57,7 @@ app.factory('ItemStorage', ($q, $http, FIREBASE_URL, AuthFactory) => {
     });
   };
 
-  let editChecked = (itemObj) => {
+  const editChecked = (itemObj) => {
     return $q((resolve, reject) => {
       $http.patch(`${FIREBASE_URL}/items/${itemObj.id}.json`, JSON.stringify(itemObj))
         .success((objFromFirebase) => {
